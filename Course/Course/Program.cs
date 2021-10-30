@@ -1,17 +1,30 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
+using Course.Entities;
+using Course.Entities.Enums;
 
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Order order = new Order
+            {
+                Id = 1080,
+                Moment = DateTime.Now,
+                Status = OrderStatus.PendingPayment
+            };
 
-namespace Course {
-    class Program {
-        static void Main(string[] args) {
+            Console.WriteLine(order);
 
-            DateTime d1 = DateTime.Parse("2000-08-15 13:05:58");
-            DateTime d2 = DateTime.Parse("2000-08-15T13:05:58Z");
+            string txt = OrderStatus.PendingPayment.ToString();
+            Console.WriteLine(txt);
 
-            Console.WriteLine(d1);
-            Console.WriteLine(d2);
+            OrderStatus os = Enum.Parse<OrderStatus>("Delivered");
+            Console.WriteLine(os);
+
         }
 
     }
