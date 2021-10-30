@@ -37,7 +37,7 @@ namespace Exercicio {
             }
 
 
-            Console.WriteLine("teste commit git HOJE");
+            Console.WriteLine("tenha um bom dia");
 
         }
 
