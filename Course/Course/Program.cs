@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Collections.Generic;
 using Course.Entities;
-using Course.Entities.Enums;
 
 namespace Course
 {
@@ -10,21 +9,14 @@ namespace Course
     {
         static void Main(string[] args)
         {
-            Order order = new Order
-            {
-                Id = 1080,
-                Moment = DateTime.Now,
-                Status = OrderStatus.PendingPayment
-            };
+            Account acc1 = new Account(1001, "Alex", 500.0);
+            Account acc2 = new SavingsAccount(1002, "Ana", 500.0, 0.01);
 
-            Console.WriteLine(order);
+            acc1.WithDraw(10.0);
+            acc2.WithDraw(10.0);
 
-            string txt = OrderStatus.PendingPayment.ToString();
-            Console.WriteLine(txt);
-
-            OrderStatus os = Enum.Parse<OrderStatus>("Delivered");
-            Console.WriteLine(os);
-
+            Console.WriteLine(acc1.Balance);
+            Console.WriteLine(acc2.Balance);
         }
 
     }
