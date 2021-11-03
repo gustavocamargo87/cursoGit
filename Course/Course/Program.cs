@@ -9,14 +9,32 @@ namespace Course
     {
         static void Main(string[] args)
         {
-            Account acc1 = new Account(1001, "Alex", 500.0);
-            Account acc2 = new SavingsAccount(1002, "Ana", 500.0, 0.01);
+            List<Account> list = new List<Account>();
+            list.Add(new SavingsAccount(1001, "Alex", 500.0, 0.01));
+            list.Add(new BusinessAccount(1002, "Maria", 500.0, 400.0));
+            list.Add(new SavingsAccount(1003, "Bob", 500.0, 0.01));
+            list.Add(new BusinessAccount(1004, "Ana", 500.0, 500.0));
 
-            acc1.WithDraw(10.0);
-            acc2.WithDraw(10.0);
+            double sum = 0;
+            foreach(Account ac in list) 
+            {
+                sum += ac.Balance;
+            }
 
-            Console.WriteLine(acc1.Balance);
-            Console.WriteLine(acc2.Balance);
+            Console.WriteLine("Total balance: " + sum.ToString("F2", CultureInfo.InvariantCulture));
+
+            foreach(Account acc in list) 
+            {
+                acc.WithDraw(10.0);
+            }
+
+            foreach (Account acc in list)
+            {
+                Console.WriteLine("Updated balance for account"
+                    + acc.Number
+                    + ": "
+                    + acc.Balance.ToString("F2", CultureInfo.InvariantCulture));
+            }
         }
 
     }
